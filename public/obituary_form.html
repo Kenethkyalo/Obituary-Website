@@ -1,0 +1,22 @@
+<html>
+<head>
+    <title>Submit Obituary</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="validate.js"></script>
+</head>
+<body>
+    <form action="/submit_obituary" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="date_of_birth" required><br>
+        <label for="dod">Date of Death:</label>
+        <input type="date" id="dod" name="date_of_death" required><br>
+        <label for="content">Content:</label>
+        <textarea id="content" name="content" required></textarea><br>
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" required><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

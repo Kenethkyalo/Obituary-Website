@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= obituary.name %>'s Obituary</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="<%= obituary.content.substring(0, 150) %>">
+    <meta name="keywords" content="obituary, <%= obituary.name %>, <%= obituary.date_of_birth %>, <%= obituary.date_of_death %>">
+    
+    <!-- Open Graph Meta Tags for Social Media Sharing -->
+    <meta property="og:title" content="<%= obituary.name %>'s Obituary">
+    <meta property="og:description" content="<%= obituary.content.substring(0, 150) %>">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="http://localhost:3000/obituary/<%= obituary.slug %>">
+    <meta property="og:image" content="path_to_image_if_available">
+    
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="obituary-container">
+        <h1><%= obituary.name %></h1>
+        <p><strong>Date of Birth:</strong> <%= obituary.date_of_birth %></p>
+        <p><strong>Date of Death:</strong> <%= obituary.date_of_death %></p>
+        <div class="obituary-content">
+            <p><%= obituary.content %></p>
+        </div>
+        <p><strong>Author:</strong> <%= obituary.author %></p>
+        
+        <div class="social-buttons">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:3000/obituary/<%= obituary.slug %>" target="_blank">Share on Facebook</a>
+            <a href="https://twitter.com/share?url=http://localhost:3000/obituary/<%= obituary.slug %>&text=<%= obituary.name %>'s Obituary" target="_blank">Share on Twitter</a>
+        </div>
+    </div>
+</body>
+</html>
