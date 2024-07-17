@@ -8,6 +8,7 @@ const PORT = 3000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
 
 const db = mysql.createConnection({
     host: 'localhost',
@@ -18,10 +19,10 @@ const db = mysql.createConnection({
 
 db.connect((err) => {
     if (err) {
-        console.error('Error connecting to database:', err);
+        console.error('Database Not Connected', err);
         return;
     }
-    console.log('Connected to MySQL');
+    console.log('Connected to MySQL/Database');
 });
 
 app.post('/submit_obituary', (req, res) => {
@@ -30,8 +31,12 @@ app.post('/submit_obituary', (req, res) => {
     const query = 'INSERT INTO obituaries (name, date_of_birth, date_of_death, content, author, slug) VALUES (?, ?, ?, ?, ?, ?)';
 
     db.query(query, [name, date_of_birth, date_of_death, content, author, slug], (err, result) => {
-        if (err) throw err;
-        res.send('Obituary submitted successfully');
+        if (err) {
+        console.error('Obituary Already Submitted:', err);
+        res.status(500).send('Obituary Already Submitted');
+    } else {
+        res.redirect('/view_obituaries');
+    }
     });
 });
 
@@ -39,8 +44,12 @@ app.get('/view_obituaries', (req, res) => {
     const query = 'SELECT * FROM obituaries';
 
     db.query(query, (err, results) => {
-        if (err) throw err;
+        if (err) {
+        console.error('Error retrieving obituaries:', err);
+        res.status(500).send('Error retrieving obituaries');
+    } else {
         res.render('obituary_list', { obituaries: results });
+    }
     });
 });
 
@@ -60,5 +69,5 @@ app.get('/sitemap.xml', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on http://localhost:${PORT}/obituary_form.html`);
 });

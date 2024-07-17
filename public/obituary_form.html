@@ -3,6 +3,14 @@
     <title>Submit Obituary</title>
     <link rel="stylesheet" href="style.css">
     <script src="validate.js"></script>
+<article itemscope itemtype="https://schema.org/Obituary">
+    <h1 itemprop="headline" style="text-align: center;">OBITUARIES</h1>
+   
+    <footer>
+        
+    </footer>
+</article>
+
 </head>
 <body>
     <form action="/submit_obituary" method="POST">
@@ -16,7 +24,14 @@
         <textarea id="content" name="content" required></textarea><br>
         <label for="author">Author:</label>
         <input type="text" id="author" name="author" required><br>
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit" class="btn3">
     </form>
+    <div class="social">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:3000" class="btn1">Share on Facebook</a>
+        <a href="https://twitter.com/share?url=http://localhost:3000" class="btn2">Share on Twitter</a>
+        <a href="https://www.Instagram.com/share?url=http://localhost:3000" class="btn4">Share on Instagram</a>
+        <hr style="color: black;">
+        <p class="copyright" style="justify-content: center;">Copyright 2024 KenethKyalo</p>
+    </div>
 </body>
 </html>

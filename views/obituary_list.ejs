@@ -1,0 +1,42 @@
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <h1 itemprop="headline" style="text-align: center;">OBITUARIES</h1>
+</head>
+<body>
+    <h1 itemprop="headline" style="text-align: center;">Obituaries Submitted</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Date of Birth</th>
+                <th>Date of Death</th>
+                <th>Content</th>
+                <th>Author</th>
+                <th>Submission Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% obituaries.forEach(function(obituary) { %>
+                <tr>
+                    <td><%= obituary.name %></td>
+                    <td><%= obituary.date_of_birth %></td>
+                    <td><%= obituary.date_of_death %></td>
+                    <td><%= obituary.content %></td>
+                    <td><%= obituary.author %></td>
+                    <td><%= obituary.submission_date %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <div class="social">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:3000" class="btn1">Share on Facebook</a>
+        <a href="https://twitter.com/share?url=http://localhost:3000" class="btn2">Share on Twitter</a>
+        <a href="https://www.Instagram.com/share?url=http://localhost:3000" class="btn4">Share on Instagram</a>
+        <hr style="color: black;">
+        <p class="copyright" style="justify-content: center;">Copyright 2024 KenethKyalo</p>
+    </div>
+   </body>
+</html>
